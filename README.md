@@ -56,8 +56,12 @@ func main() {
   if err != nil {
     // TODO: error handling
   }
-  config := gonfig.FromJson(f)
   defer f.Close();
+  config, err := gonfig.FromJson(f)
+  if err != nil {
+    // TODO: error handling
+  }
+  
   
   username := config.GetString("credentials/facebook/username", "scooby")
   password := config.GetString("credentials/facebook/password", "123456")
