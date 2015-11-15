@@ -63,10 +63,22 @@ func main() {
   }
   
   
-  username := config.GetString("credentials/facebook/username", "scooby")
-  password := config.GetString("credentials/facebook/password", "123456")
-  host := config.GetString("services/facebook/host", "localhost")
-  port := config.GetInt("services/facebook/port", 80)
+  username, err := config.GetString("credentials/facebook/username", "scooby")
+  if err != nil {
+    // TODO: error handling
+  }
+  password, err := config.GetString("credentials/facebook/password", "123456")
+  if err != nil {
+    // TODO: error handling
+  }
+  host, err := config.GetString("services/facebook/host", "localhost")
+  if err != nil {
+    // TODO: error handling
+  }
+  port, err := config.GetInt("services/facebook/port", 80)
+  if err != nil {
+    // TODO: error handling
+  }
   
   // TODO: example something
   // login(host, port, username, password)
