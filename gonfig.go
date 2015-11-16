@@ -1,3 +1,6 @@
+/*
+Package gonfig implements methods for reading config files encoded in json using path expressions and default fallback values
+*/
 package gonfig
 
 import (
