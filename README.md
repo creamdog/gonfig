@@ -1,6 +1,10 @@
 # gonfig
 a json config parser for GO with support for path selectors
 
+##package documentation
+
+https://godoc.org/github.com/creamdog/gonfig
+
 ##overview
 
 a loaded config gonfig.FromJson("path/to/config.json") exposes the following methods
