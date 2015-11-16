@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+// Gonfig implementation
+// Implements the Gonfig interface
 type JsonGonfig struct {
 	obj map[string]interface{}
 }
