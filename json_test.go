@@ -7,6 +7,55 @@ import (
 	"testing"
 )
 
+func TestString1(t *testing.T) {
+	reader := bytes.NewReader([]byte(`
+		{
+			"some" : {
+				"key" : "abc"
+			}
+		}
+	`))
+	config, err := FromJson(reader)
+	if err != nil {
+		t.Error(err)
+		t.Fail()
+	}
+	value, err := config.GetString("some/key", "")
+	if err != nil {
+		t.Error(err)
+		t.Fail()
+	}
+
+	if value != "abc" {
+		t.Error(fmt.Sprintf("expected value to be abc but it was %v", value))
+		t.Fail()
+	}
+}
+
+func TestStringDefault1(t *testing.T) {
+	reader := bytes.NewReader([]byte(`
+		{
+			"some" : {
+			}
+		}
+	`))
+	config, err := FromJson(reader)
+	if err != nil {
+		t.Error(err)
+		t.Fail()
+	}
+	value, err := config.GetString("what", "monkey")
+	if err != nil {
+		t.Error(err)
+		t.Fail()
+	}
+
+	if value != "monkey" {
+		t.Error(fmt.Sprintf("expected value to be monkey but it was %v", value))
+		t.Fail()
+	}
+}
+
 func TestBool1(t *testing.T) {
 	reader := bytes.NewReader([]byte(`
 		{
