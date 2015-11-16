@@ -1,5 +1,5 @@
 # gonfig
-a json config parser for GO with support for path selectors
+a config parser for GO with support for path selectors
 
 ##package documentation
 
