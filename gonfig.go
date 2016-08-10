@@ -32,5 +32,5 @@ type UnexpectedValueTypeError struct {
 }
 
 func (err *UnexpectedValueTypeError) Error() string {
-	return fmt.Sprintf("%s, key: %s, value: %v (%s)", err.message, err.key, err.value, reflect.TypeOf(err.value).Name())
+	return fmt.Sprintf("%s, key: %s, value: %v (%s) %T", err.message, err.key, err.value, reflect.TypeOf(err.value).Name(), err.value)
 }

@@ -125,6 +125,14 @@ func (jgonfig *JsonGonfig) Get(key string, defaultValue interface{}) (interface{
 			} else {
 				return nil, &KeyNotFoundError{key: path.Join(append(parts[:index], part)...)}
 			}
+		} else if confMap, ok := tmp.(map[interface{}]interface{}); ok {
+			if value, exists := confMap[part]; exists {
+				tmp = value
+			} else if defaultValue != nil {
+				return defaultValue, nil
+			} else {
+				return nil, &KeyNotFoundError{key: path.Join(append(parts[:index], part)...)}
+			}
 		} else {
 			return nil, &UnexpectedValueTypeError{key: path.Join(parts[:index]...), value: tmp, message: "value behind key is not a map[string]interface{}"}
 		}
