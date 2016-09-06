@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
+	"os"
 	"path"
 	"strings"
 )
@@ -12,6 +13,22 @@ import (
 // Implements the Gonfig interface
 type JsonGonfig struct {
 	obj map[string]interface{}
+}
+
+// FromJsonFile opens the file supplied and calls
+// FromJson function
+func FromJsonFile(filename string) (Gonfig, error) {
+	f, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	config, err := FromJson(f)
+	if err != nil {
+		return nil, err
+	}
+
+	return config, nil
 }
 
 // FromJson reads the contents from the supplied reader.
